@@ -210,15 +210,28 @@ pure spine — see §1 gap 1), Evaluation (model card and metrics).
 
 ### Risk most likely to derail this phase
 
-**The `ml` extra may not install on the development machine at all.** `pyproject.toml`
-pins `torch>=2.5`, and the recorded dev machine is an Intel x86_64 Mac. PyTorch stopped
-publishing macOS x86_64 wheels after the 2.2.x line. If that holds here, `uv sync
---extra ml` either fails to resolve or falls back to building from source, and the
-consequence is not merely "training is slow" — **`torch` is the reference implementation**
-that Week 4's parity test compares the exported artifacts against. No torch means no
-reference, which means N20 cannot be satisfied, which means Weeks 4, 5 and 6 all rest on
-an export nobody compared. This must be verified as the very first action of the phase, not
-discovered inside it.
+**RESOLVED before the phase began — recorded because the constraint still binds.**
+`pyproject.toml` originally pinned `torch>=2.5`, and the dev machine is an Intel x86_64
+Mac. PyTorch's last macOS x86_64 wheel is **2.2.2**, verified against PyPI, so that pin was
+unsatisfiable here. `torch` is the reference implementation Week 4's parity test compares
+the exported artifacts against, so no torch would have meant no reference, N20 unsatisfiable,
+and Weeks 4-6 resting on an export nobody compared.
+
+Fixed with platform markers rather than a global downgrade: `torch==2.2.2` plus `numpy<2`
+on `darwin`/`x86_64`, `torch>=2.5` everywhere else, so CI and any Apple Silicon machine are
+unaffected. Verified: `uv sync --extra ml` installs and `torch.randn(2,3) @ torch.randn(3,2)`
+runs.
+
+**The same ceiling caught a second, quieter failure.** `transformers` 5.x requires
+`torch>=2.5` and, below it, **disables torch silently** — `is_torch_available()` returns
+False and the library reports "PyTorch was not found" while torch is installed and working.
+Depth Anything V2 would have been unloadable for a reason naming the wrong cause. The
+`depth` extra is now capped `transformers<5` on the same platform; verified
+`is_torch_available()` is True at transformers 4.57.6.
+
+**What still binds:** this machine is pinned to a 2023 torch. Any future dependency
+requiring `torch>=2.4` hits the same wall with no upgrade path, because there is no newer
+macOS x86_64 wheel to move to. The escape is different hardware, not a different pin.
 
 **Early warning sign:** the first `uv sync --extra ml` on the dev Mac prints a resolution
 error mentioning `torch`, **or** — the more dangerous variant — succeeds by selecting a

@@ -26,11 +26,27 @@ dataset = [
 ]
 ml = [
     "ultralytics>=8.3",  # Lesson 03 — YOLO11
-    "torch>=2.5",        # Lesson 03
+    # torch 2.2.2 is the LAST release with a macOS x86_64 wheel; PyTorch followed
+    # Apple in dropping Intel. On that platform this is a ceiling, not a
+    # preference — there is nothing newer to move to, so the marker pins it there
+    # rather than letting resolution fail. Everywhere else, take something modern.
+    # torch is what N20 export parity compares the exported artifact against, so a
+    # platform that cannot install it cannot run the reference implementation.
+    "torch>=2.5; sys_platform != 'darwin' or platform_machine != 'x86_64'",
+    "torch==2.2.2; sys_platform == 'darwin' and platform_machine == 'x86_64'",
+    # torch 2.2.2 is built against the numpy 1.x C ABI; numpy 2 breaks it at
+    # import time on that platform only.
+    "numpy<2; sys_platform == 'darwin' and platform_machine == 'x86_64'",
     "mlflow>=2.17",      # Lesson 03
 ]
 depth = [
     "transformers>=4.46",  # Lesson 03 — Depth Anything V2, inference only
+    # transformers 5.x requires torch >= 2.5 and, below that, DISABLES torch
+    # silently rather than failing: `is_torch_available()` goes False and you get
+    # "PyTorch was not found" while torch is installed and working. On macOS
+    # x86_64 torch is capped at 2.2.2 (see the `ml` extra), so 5.x would leave
+    # Depth Anything V2 unloadable for a reason that names the wrong cause.
+    "transformers<5; sys_platform == 'darwin' and platform_machine == 'x86_64'",
     "timm>=1.0",           # Lesson 03 — backbone Depth Anything V2 depends on
 ]
 
