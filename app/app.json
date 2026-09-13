@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "Smart Scene Analyzer",
+    "slug": "smart-scene-analyzer",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "platforms": ["ios", "android"],
+
+    "ios": {
+      "bundleIdentifier": "com.smartsceneanalyzer.app",
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "com.smartsceneanalyzer.app"
+    },
+
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Smart Scene Analyzer uses the camera to capture a single photo to analyze on this device. The photo is never uploaded anywhere.",
+          "photosPermission": "Smart Scene Analyzer needs access to your photos so you can pick a single image to analyze on this device. The photo is never uploaded anywhere.",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "react-native-fast-tflite",
+        {
+          "enableCoreMLDelegate": true
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "17.0"
+          },
+          "android": {
+            "minSdkVersion": 26
+          }
+        }
+      ]
+    ]
+  }
+}

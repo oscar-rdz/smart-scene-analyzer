@@ -1,0 +1,101 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+# Ordered cheapest-first: a formatting error fails in seconds, not after a full
+# test run. Each stage is a separate job gated on the previous one via `needs`,
+# so a lint failure shows up as its own red check and nothing more expensive
+# runs behind it. There is no build/publish/deploy job here: the app has no
+# server and no image to push, and "release" is an app-store submission that
+# is a project decision, not a CI job (see .claude/agents/devops.md).
+env:
+  UV_VERSION: "0.12.13"
+  PYTHON_VERSION: "3.11"
+
+jobs:
+  lint:
+    name: ruff check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v10
+        with:
+          version: ${{ env.UV_VERSION }}
+          python-version: ${{ env.PYTHON_VERSION }}
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: ruff check
+        run: uv run ruff check .
+
+  format:
+    name: ruff format --check
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v10
+        with:
+          version: ${{ env.UV_VERSION }}
+          python-version: ${{ env.PYTHON_VERSION }}
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: ruff format --check
+        run: uv run ruff format --check .
+
+  typecheck:
+    name: mypy
+    needs: format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v10
+        with:
+          version: ${{ env.UV_VERSION }}
+          python-version: ${{ env.PYTHON_VERSION }}
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: mypy --strict on src/
+        run: uv run mypy src
+
+  test:
+    name: pytest (offline suite)
+    needs: typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v10
+        with:
+          version: ${{ env.UV_VERSION }}
+          python-version: ${{ env.PYTHON_VERSION }}
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync
+
+      # CI has no model weights and no exported artifacts on disk, so anything
+      # marked `integration` (tests/__init__.py / pyproject.toml markers) is
+      # deselected here rather than left to fail or, worse, to be silently
+      # collected as zero tests. `--strict-markers` (set in pyproject's
+      # addopts) turns an unregistered marker into an error instead of a
+      # silent no-op, which is what makes this deselection trustworthy.
+      - name: pytest -m "not integration"
+        run: uv run pytest -m "not integration"
