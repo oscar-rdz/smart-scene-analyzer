@@ -13,11 +13,11 @@ a parser that silently finds nothing reports a balance of zero and blocks everyt
 
 | | |
 |---|---|
-| Workspace | `<your-workspace-slug>` |
+| Workspace | `oscar-rodriguez-enroutesystems-com` |
 | Plan | Public (free) |
 | Starting balance | 20.0 |
-| **Remaining** | **20.0** |
-| Last reconciled | `<date>` against `app.roboflow.com/<workspace>/settings/usage` |
+| **Remaining** | **18.51** |
+| Last reconciled | `2026-09-13` against `app.roboflow.com/oscar-rodriguez-enroutesystems-com/settings/usage` |
 
 ---
 
@@ -47,6 +47,9 @@ doing — it documents that you took the free path deliberately.
 | Date | Lesson | Operation | Rate | Estimated | Actual | Running total | Remaining |
 |---|---|---|---|---|---|---|---|
 | | | *starting balance* | | | | 0.0 | 20.0 |
+| 2026-09-13 | 02 | Upload 9,890 SUN RGB-D images to `smart-scene-analyzer-2026-09-13` | 1cr/10,000 images | 0.989 | 0.99 | 0.99 | 19.01 |
+| | | *Note: estimate 0.989 vs actual 0.99 is Roboflow's 2-decimal display rounding, not a rate the table fails to model.* | | | | | |
+| 2026-09-13 | 02 | Generate dataset version 1 (9,890 images, no augmentation) | 1cr/20,000 images | 0.495 | 0.50 | 1.49 | 18.51 |
 
 ---
 

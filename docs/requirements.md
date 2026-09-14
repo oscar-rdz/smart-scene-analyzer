@@ -22,7 +22,8 @@
 
 ### Object taxonomy
 
-`pending — see Lesson 02 step 10`
+Resolved 2026-09-13 — 11 classes. See `docs/taxonomy.md` and
+`docs/decisions/0002-object-taxonomy.md`.
 
 Deferred deliberately: the class list is a property of the dataset, and committing to
 classes before the data exists risks a taxonomy the data cannot support. F1–F4 do not

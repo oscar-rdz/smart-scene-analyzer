@@ -649,7 +649,11 @@ environment and is the only module that touches MLflow. Both branches are the sa
 with a different string. It **does** block the meaning of `manifest.mlflow_run_id`, so the
 answer is needed before the first export ships an ID anybody relies on — Lesson 03.
 
-### 8.2 Object taxonomy — **OPEN**, deferred to Lesson 02 step 10
+### 8.2 Object taxonomy — **RESOLVED** by ADR 0002
+
+Resolved 2026-09-13: 11 classes, `docs/decisions/0002-object-taxonomy.md`, normative
+list in `docs/taxonomy.md`. `num_classes` = 11. The `labels` placeholder in §7 is
+filled by the export, not by hand.
 
 Affects `num_classes` in B5, the `labels` array in B10, and `Detection.class_id`/`label`.
 The design is insulated: the label list is **read from the manifest**, never hardcoded in
