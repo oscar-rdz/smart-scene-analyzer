@@ -17,9 +17,9 @@ Lesson 06 for a project that ran out in Lesson 03.
 
 Do these in order. Do not call the billed tool until all four are done.
 
-1. **Find the rate.** Read it from `roboflow:plans-and-pricing`, not from memory and not
-   from the summary table in `CLAUDE.md`. Upstream rates change; the skill is re-read
-   from disk every session, the table is not. Quote the rate you found.
+1. **Find the rate.** Read it from `roboflow:roboflow-plans-and-pricing`, not from memory
+   and not from the summary table in `CLAUDE.md`. Upstream rates change; the skill is
+   re-read from disk every session, the table is not. Quote the rate you found.
 
 2. **Show the arithmetic.** Not "roughly 2 credits" — the multiplication.
 
@@ -89,7 +89,8 @@ cheap path was chosen deliberately rather than missed.
 
 ## What good output looks like
 
-- The rate is quoted from `roboflow:plans-and-pricing` with the operation it applies to
+- The rate is quoted from `roboflow:roboflow-plans-and-pricing` with the operation it
+  applies to
 - The arithmetic is shown, not summarized
 - The remaining balance is read from the ledger, not recalled
 - A ledger row exists before the call and is completed after it

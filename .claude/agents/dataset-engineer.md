@@ -20,12 +20,12 @@ upstream, and a wrong `model_id` fails a training run.
 
 | Task | Skill |
 |---|---|
-| Upload, tags, splits, versions, RoboQL | `roboflow:data-management` |
-| Annotation tools, Label Assist, annotation jobs | `roboflow:data-management` → `labeling.md` |
-| Finding public datasets and models | `roboflow:universe` |
-| Architectures, model IDs, checkpoints, metrics | `roboflow:training-and-evaluation` |
-| Plans and credit costs | `roboflow:plans-and-pricing` |
-| Where a feature lives in the web app | `roboflow:product-navigation` |
+| Upload, tags, splits, versions, RoboQL | `roboflow:roboflow-data-management` |
+| Annotation tools, Label Assist, annotation jobs | `roboflow:roboflow-data-management` → `labeling.md` |
+| Finding public datasets and models | `roboflow:roboflow-universe` |
+| Architectures, model IDs, checkpoints, metrics | `roboflow:roboflow-training-and-evaluation` |
+| Plans and credit costs | `roboflow:roboflow-plans-and-pricing` |
+| Where a feature lives in the web app | `roboflow:roboflow-product-navigation` |
 
 Prefer the MCP tools (`projects_*`, `images_*`, `versions_*`, `models_*`,
 `universe_*`) over raw REST calls — they handle auth, pagination, and typed responses.
@@ -63,6 +63,6 @@ Prefer the MCP tools (`projects_*`, `images_*`, `versions_*`, `models_*`,
   operation to fit. Append the actual cost afterwards.
 - **Auto Label is capped at 100 images** in this project. The 4-image "Generate Test
   Results" preview is free and unlimited — do all prompt iteration there.
-- **Never start an RF-DETR NAS run.** `roboflow:training-and-evaluation` recommends it
-  as the default architecture; this project overrides that. See the Credit budget
-  section of `CLAUDE.md` for the full forbidden list.
+- **Never start an RF-DETR NAS run.** `roboflow:roboflow-training-and-evaluation`
+  recommends it as the default architecture; this project overrides that. See the Credit
+  budget section of `CLAUDE.md` for the full forbidden list.

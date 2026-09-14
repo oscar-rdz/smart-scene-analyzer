@@ -20,8 +20,8 @@ measuring anything.
 
 | Task | Skill |
 |---|---|
-| Metric definitions, what mAP@50 vs mAP@50-95 mean | `roboflow:training-and-evaluation` |
-| Reading a confusion matrix into a diagnosis | `roboflow:training-and-evaluation` → `improvement-playbook.md` |
+| Metric definitions, what mAP@50 vs mAP@50-95 mean | `roboflow:roboflow-training-and-evaluation` |
+| Reading a confusion matrix into a diagnosis | `roboflow:roboflow-training-and-evaluation` → `improvement-playbook.md` |
 
 ## Method
 

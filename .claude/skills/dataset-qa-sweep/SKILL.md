@@ -8,8 +8,8 @@ description: Use after uploading images to Roboflow, after any annotation change
 Run this with the `dataset-engineer` role, after every upload and before every version
 generation. **Credits: zero** — RoboQL queries and `images_search` are free.
 
-Consult `roboflow:data-management` for current RoboQL syntax before starting. The syntax
-changes upstream; this file does not.
+Consult `roboflow:roboflow-data-management` for current RoboQL syntax before starting.
+The syntax changes upstream; this file does not.
 
 ## This sweep is read-only
 

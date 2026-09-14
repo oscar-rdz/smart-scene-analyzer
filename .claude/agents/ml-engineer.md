@@ -23,10 +23,10 @@ sides of that disagreement, and neither of you gets to settle it alone.
 
 | Task | Skill |
 |---|---|
-| Architectures, exact `model_id` values, checkpoints, metrics | `roboflow:training-and-evaluation` |
-| Diagnosing a confusion matrix | `roboflow:training-and-evaluation` → `improvement-playbook.md` |
-| Uploading locally trained weights back to the platform | `roboflow:custom-weights-upload` |
-| Credit rates | `roboflow:plans-and-pricing` |
+| Architectures, exact `model_id` values, checkpoints, metrics | `roboflow:roboflow-training-and-evaluation` |
+| Diagnosing a confusion matrix | `roboflow:roboflow-training-and-evaluation` → `improvement-playbook.md` |
+| Uploading locally trained weights back to the platform | `roboflow:roboflow-custom-weights-upload` |
+| Credit rates | `roboflow:roboflow-plans-and-pricing` |
 
 **Model IDs are exact strings and wrong ones fail the run.** Read them from the skill,
 never from memory.
@@ -67,8 +67,8 @@ never from memory.
   expected wall time, the resulting estimate, and the remaining balance — then wait.
 - **Never start an RF-DETR NAS run** (`rfdetr-nas-parent`, `rfdetr-nas-pecoret-parent`,
   `rfdetr-nas-base-parent`, `rfdetr-nas-seg-parent`).
-  `roboflow:training-and-evaluation` recommends NAS as its default first choice; this
-  project overrides that. A NAS run trains dozens of child models over hours at 2
+  `roboflow:roboflow-training-and-evaluation` recommends NAS as its default first choice;
+  this project overrides that. A NAS run trains dozens of child models over hours at 2
   credits/hour and fails outright on non-Core plans. If you find yourself reaching for
   it, the answer is `yolov11s`.
 - **Roboflow Instant training is free.** Prefer it for any "what does the platform path

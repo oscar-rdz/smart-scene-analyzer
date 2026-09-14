@@ -121,7 +121,9 @@ Two boundaries are load-bearing rather than tidy:
 ## Project skills
 
 `.claude/skills/` holds this project's own procedures, as distinct from the vendor
-knowledge in the `roboflow:*` skills. Invoke them by name.
+knowledge in the `roboflow:roboflow-*` skills. (The doubled prefix is not a typo: those
+ship in a plugin named `roboflow`, and the skills inside it are themselves named
+`roboflow-*`.) Invoke them by name.
 
 | Skill | Use it when |
 |---|---|
@@ -276,7 +278,7 @@ been spent and what remains.
 
 State three things and wait for approval:
 
-1. The operation and the rate that applies (from `roboflow:plans-and-pricing`).
+1. The operation and the rate that applies (from `roboflow:roboflow-plans-and-pricing`).
 2. The estimated cost, with the arithmetic shown.
 3. The remaining balance from `docs/credit-budget.md`.
 
@@ -307,8 +309,9 @@ different route to the same billed call.
 
 ### What one credit buys
 
-Rates change upstream. Verify against `roboflow:plans-and-pricing` rather than trusting
-this table, which is recorded here so the order of magnitude is visible at a glance.
+Rates change upstream. Verify against `roboflow:roboflow-plans-and-pricing` rather than
+trusting this table, which is recorded here so the order of magnitude is visible at a
+glance.
 
 | Operation | 1 credit |
 |---|---|

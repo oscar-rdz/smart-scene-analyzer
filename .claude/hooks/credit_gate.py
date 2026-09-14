@@ -76,7 +76,7 @@ def main() -> None:
             f"BLOCKED: {tool_name} bills credits and {LEDGER_RELATIVE_PATH} has no "
             "pending estimate.\n"
             "Before retrying, append a Ledger row with the date, lesson, operation, "
-            "the rate from `roboflow:plans-and-pricing`, and the estimated cost with "
+            "the rate from `roboflow:roboflow-plans-and-pricing`, and the estimated cost with "
             "the arithmetic shown. Leave Actual blank until the call returns.\n"
             f"Remaining balance: {ledger.remaining}"
         )

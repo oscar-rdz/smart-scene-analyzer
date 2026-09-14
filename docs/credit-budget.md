@@ -52,8 +52,8 @@ doing — it documents that you took the free path deliberately.
 
 ## Rates
 
-Verify against `roboflow:plans-and-pricing` before relying on these. Upstream rates
-change, and the skill is read fresh from disk every session; this table is not.
+Verify against `roboflow:roboflow-plans-and-pricing` before relying on these. Upstream
+rates change, and the skill is read fresh from disk every session; this table is not.
 
 **What 1 credit buys**
 

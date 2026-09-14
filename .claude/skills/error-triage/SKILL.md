@@ -41,7 +41,7 @@ A class with 6 instances at "0.00 recall" is not a finding.
 ## Step 2 — diagnose, through the playbook
 
 Read the confusion matrix through the decision tree in
-`roboflow:training-and-evaluation` → `improvement-playbook.md`.
+`roboflow:roboflow-training-and-evaluation` → `improvement-playbook.md`.
 
 For every class with recall below 0.5 or precision below 0.5, establish:
 
